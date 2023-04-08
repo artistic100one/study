@@ -96,9 +96,9 @@ vector reflected(vector I, vector N)
 	return I - N*(2 * (I%N) / (N%N));
 }
 
-//vector refracted(vector I, vector N, double eta1, double eta2) {
-//
-//}
+vector refracted(vector I, vector N, double eta1, double eta2) {
+	return (I - N * (N % I))*(eta1 / eta2)- N*(sqrt(1 - (eta1 * eta1) / (eta2 * eta2) * (1 - (I % N) * (I % N))));
+}
 
 vector shade(int id) {
 	vector color, p, N, L;
