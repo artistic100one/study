@@ -1,10 +1,10 @@
 ﻿  소스.cpp
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(143,9): warning C4101: 'a' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(143,12): warning C4101: 'b' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(143,15): warning C4101: 'c' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(143,18): warning C4101: 'd' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(268,9): warning C4101: 'refl' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(270,9): warning C4101: 'eta' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(269,9): warning C4101: 'alpha' :참조되지 않은 지역 변수입니다.
-C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(267,9): warning C4101: 'r' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(198,9): warning C4101: 'a' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(198,12): warning C4101: 'b' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(198,15): warning C4101: 'c' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(198,18): warning C4101: 'd' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(348,9): warning C4101: 'refl' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(350,9): warning C4101: 'eta' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(349,9): warning C4101: 'alpha' :참조되지 않은 지역 변수입니다.
+C:\Users\artis\Desktop\Coding\study\C\Opengltest\Project1\소스.cpp(347,9): warning C4101: 'r' :참조되지 않은 지역 변수입니다.
   Project1.vcxproj -> C:\Users\artis\Desktop\Coding\study\C\Opengltest\x64\Debug\Project1.exe

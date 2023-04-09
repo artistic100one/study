@@ -6,6 +6,9 @@
 #include <GL/glut.h>
 #include "VECTOR.h"
 
+/***
+	static value setting
+*/
 
 #define PHI 3.141592
 #define EPS 1.0e-10
@@ -17,6 +20,15 @@
 
 #define bigger(a, b) ((a) > (b) ? (a) : (b))
 #define smaller(a, b) ((a) < (b) ? (a) : (b))
+
+/*
+	ray struct
+	o is one's position
+	v is a vector of course
+	t is a distance how far from once
+	p is a vector of target's position
+	obj_id is a object id
+*/
 
 typedef struct {
 	vector o;
@@ -38,6 +50,19 @@ vector **FB;
 int FBready = 0;
 vector light;
 vector   background;
+
+/*
+	object ball's struct
+	c is center of ball
+	r is ball's radius
+	refl is reflection coefficient value
+	alpha is 
+	eta is refraction's value
+	color is RGB value
+
+	hitt is ray's t hit position
+	hitt is ray's p hit position
+*/
 
 typedef struct {
 	vector c;
@@ -67,6 +92,10 @@ object_ball OBJ_BALL[100];
 vector U, V, W;
 vector M1, M2, M3;
 
+/*
+	Viewing Transformation is rescale and transformation
+*/
+
 void Viewing_Transformation() {
 	vector u, v, w;
 	w = E - AT;
@@ -83,6 +112,10 @@ void Viewing_Transformation() {
 
 }
 
+/*
+	change dimension Eye to window
+*/
+
 vector EtoW(vector eye) {
 	return vector(M1 % eye, M2 % eye, M3 % eye);
 }
@@ -91,14 +124,28 @@ void Screen_Distance() {
 	sdist = ny / (2 * tan(fovy * PHI / 360));
 }
 
+/*
+	reflect law
+*/
+
 vector reflected(vector I, vector N)
 {
 	return I - N*(2 * (I%N) / (N%N));
 }
 
+/*
+	refract law
+*/
+
 vector refracted(vector I, vector N, double eta1, double eta2) {
-	return (I - N * (N % I))*(eta1 / eta2)- N*(sqrt(1 - (eta1 * eta1) / (eta2 * eta2) * (1 - (I % N) * (I % N))));
+	double NI = I%N;
+	double eta = eta1 / eta2;
+	return (I - N * NI) * eta - N * (sqrt(1 - eta * eta * (1 - NI * NI)));
 }
+
+/*
+	make shade from light
+*/
 
 vector shade(int id) {
 	vector color, p, N, L;
@@ -117,6 +164,10 @@ vector background_color() {
 	return WHITE;
 }
 
+/*
+	find first hit object's point t
+*/
+
 double first_hit_of_t(object_ball ob, ray r) {
 	double a, b, c, d, t;
 	vector oc;
@@ -134,6 +185,10 @@ double first_hit_of_t(object_ball ob, ray r) {
 	t = (-b - d) / a;
 	return t;
 }
+
+/*
+	find first hit object id
+*/
 
 int first_hit_id(ray r) {
 
@@ -159,6 +214,10 @@ int first_hit_id(ray r) {
 	return id;
 }
 
+/*
+	check hit object from pixel
+*/
+
 double ray_hit_obj(ray sr, int id) {
 	double a, b, c, d;
 	object_ball	ob;
@@ -178,6 +237,10 @@ double ray_hit_obj(ray sr, int id) {
 
 }
 
+/*
+	shadow is checking block the others
+*/
+
 int shadow(int id)// check if an obstacle id<->light
 {
 	ray	sr;
@@ -192,6 +255,10 @@ int shadow(int id)// check if an obstacle id<->light
 	}
 	return 0;
 }
+ 
+/*
+	highlight is object's most lighting point
+*/
 
 double	highlight(int id)// hl at P of obj
 {
@@ -212,6 +279,11 @@ double	highlight(int id)// hl at P of obj
 	return  co<HIGHRIGHT ? 1 : (1 - co) / (1 - HIGHRIGHT);
 }
 
+/*
+	get color from the ray
+	color, shade, shadow, reflect, refract, highlight
+*/
+
 vector getColor_of_the_Ray(ray r) {
 	vector color;
 	int   id;
@@ -227,6 +299,10 @@ vector getColor_of_the_Ray(ray r) {
 	hl = highlight(id);
 	return (color*hl) + (WHITE * (1 - hl));
 }
+
+/*
+	main raycasting
+*/
 
 void RayCast() {
 	vector pixel;
@@ -259,6 +335,10 @@ void RayCast() {
 	}
 	FBready = 1;
 }
+
+/*
+	scanning data from data text
+*/
 
 void myInit() {
 	FILE *fd;
@@ -319,6 +399,10 @@ void myInit() {
 
 }
 
+/*
+	display uses opengl
+*/
+
 void display() {
 	vector c;
 
@@ -335,6 +419,10 @@ void display() {
 	glEnd();
 	glFlush();
 }
+
+/*
+	program main stream
+*/
 
 int   main(int ac, char **av)
 {
